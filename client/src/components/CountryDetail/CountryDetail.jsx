@@ -32,7 +32,7 @@ const CountryDetail = (props) => {
                     <div>
                         <h4>Activity name: {tour.name}</h4>
                         <p>Difficulty: {`${tour.difficulty}/5`}</p> 
-                        <p>Duration: {`${tour.duration} hours`}</p>
+                        <p>Duration: {tour.duration}</p>
                         <p>Season: {tour.season}</p>
                         <hr/>
                     </div>

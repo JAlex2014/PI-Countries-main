@@ -2,6 +2,7 @@ import * as actions from  "./../../redux/actions/index";
 import CountryCard from "../CountryCard/CountryCard";
 import { Component } from "react";
 import {connect} from "react-redux";
+import Search from "../Search/Search";
 
 export class Home extends Component{
     componentDidMount(){
@@ -10,7 +11,7 @@ export class Home extends Component{
     render(){
         return(
             <div>
-                <h1>Aquí aparecerá el listado de 250 Countries</h1>
+                <Search/>
                     <>
                     {this.props.countries?.map(country => <CountryCard
                     key = {country.id}

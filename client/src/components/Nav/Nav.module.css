@@ -1,0 +1,10 @@
+.navbar{
+    background-color: wheat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navlinks {
+    column-gap: 50px;
+    padding: 20px;
+}
