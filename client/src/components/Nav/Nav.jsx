@@ -6,8 +6,6 @@ import Style from "./Nav.module.css";
 const Nav = () =>{
     return(
         <header className="nav">
-            <img id="paises" src={"https://st2.depositphotos.com/3725083/5485/i/950/depositphotos_54856347-stock-photo-travel-the-world-monument-concept.jpg"} 
-            width="600" height="200" className="l" alt=""/>
             <nav>
                 <div className={Style.navbar}>
                     <div className={Style.navlinks}>

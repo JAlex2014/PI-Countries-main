@@ -6,18 +6,16 @@ export const GET_COUNTRIES_SUMMARY = "GET_COUNTRIES_SUMMARY";
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 
 export const getAllCountries = () => {
-    return function(dispatch){
-        return axios.get("http://localhost:3001/countries")
-            .then(response => response.data)
-            .then(data => dispatch({type:GET_ALL_COUNTRIES, payload: data}));
+    return async function(dispatch){
+        let response = await axios.get("http://localhost:3001/countries");
+        return dispatch({type:GET_ALL_COUNTRIES, payload: response.data});
     };
 };
 
-export const getCountryDetail = (id) =>{
-    return function(dispatch){
-        return axios.get(`http://localhost:3001/countries/${id}`)
-                .then(response => response.data)
-                .then(data => dispatch({type:GET_COUNTRY_DETAIL, payload: data}));
+export const getCountryDetail = (id) => {
+    return async function(dispatch){
+        let response = await axios.get(`http://localhost:3001/countries/${id}`)
+        return dispatch({type:GET_COUNTRY_DETAIL, payload: response.data});
     };
 };
 

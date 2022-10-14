@@ -53,6 +53,19 @@ const getCountrieswithTours = async function (){
     return data;
 };/********************************************************************/
 
+const getTourswithCountries = async function (){
+    const data = await Tours.findAll({
+        include:[{ 
+            model: Country,
+            attributes: ["name"],
+            through:{
+                attributes:  {exclude: ["createdAt", "updatedAt"]},
+                }
+        }],
+    });
+    return data;
+};
+
 //FUNCION PARA MATCHEAR EL STRING QUE SE INGRESA POR QUERY CON LOS NOMBRES
 //DE PAISES QUE COINCIDAN CON ESE STRING EN MI ARRAY DE PAISES
 const findCountriesbyQuery = (queryInfo, countries) => {
@@ -146,4 +159,5 @@ module.exports = {
     findCountriesbyId,
     addTourtoCountry,
     evaluate_existingtours,
+    getTourswithCountries
 }

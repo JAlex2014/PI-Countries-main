@@ -63,7 +63,7 @@ const CreateTour = () => {
                 <div>
                 <label>Name: </label>
                 <input type="text" name="name" onChange={handlerChange} 
-                        placeholder={"Here goes the name of the activity"} value={state.name}/>
+                        placeholder={"Here goes the activity's name"} value={state.name}/>
                 </div>
                 
                 <div>

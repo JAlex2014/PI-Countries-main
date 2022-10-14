@@ -2,6 +2,7 @@ import {GET_ALL_COUNTRIES} from '../actions/index';
 import {GET_COUNTRY_DETAIL} from '../actions/index';
 import {CREATE_ACTIVITY} from '../actions/index';
 import {GET_COUNTRIES_SUMMARY} from '../actions/index';
+
 const initialState = {
     countries: [],
     countryDetail: {},

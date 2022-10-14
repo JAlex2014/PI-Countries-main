@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {getCountriesSummary} from './../../redux/actions/index';
 import { useDispatch } from 'react-redux';
 
-export default function SearchBar(props) {
+export default function SearchBar() {
 
     const [input, setinput] = useState('');
 
@@ -20,11 +20,9 @@ export default function SearchBar(props) {
 
     return( 
         <div>
-            <form onSubmit={submitHandler}>
-                <input type='text' placeholder={'Search your country...'} 
-                    onChange={searchHandler}/>
-                <button type="submit">Search</button>
-            </form>
+            <input type='text' placeholder={'Search your country...'} 
+                onChange={searchHandler} value={input}/>
+            <button type="submit" onClick={submitHandler}>Search</button>
         </div>
     )
 }; 
