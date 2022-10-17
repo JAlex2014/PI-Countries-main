@@ -21,23 +21,23 @@ const CountryDetail = (props) => {
             <h1>{countryDetail.name}</h1>
             <img src={countryDetail.flag_img} alt="Default png"/>
             <h2>{countryDetail.continent}</h2>
-            <h3>{countryDetail.id}</h3>
+            <h3>Country ID: {countryDetail.id}</h3>
             <h3>Capital: {countryDetail.capital}</h3>
             <h3>Subregion: {countryDetail.subregion?countryDetail.subregion:"None"}</h3>
-            <h3>Area: {`${countryDetail.area} km²`}</h3>
-            <h3>Population: {countryDetail.population}</h3>
-            <h3>Tours: 
+            <h3>Area: {`${new Intl.NumberFormat('en-US').format(countryDetail.area)} km²`}</h3>
+            <h3>Population: {new Intl.NumberFormat('en-US').format(countryDetail.population)}</h3>
+            <h3>Tours:</h3>
             <hr/>
                 {countryDetail.tours?.map(tour => 
                     <div>
-                        <h4>Activity name: {tour.name}</h4>
+                        <p>Activity name: {tour.name}</p>
                         <p>Difficulty: {`${tour.difficulty}/5`}</p> 
                         <p>Duration: {tour.duration}</p>
                         <p>Season: {tour.season}</p>
                         <hr/>
                     </div>
                 )}
-            </h3>
+            
             {console.log(countryDetail)}
         </div>
     )

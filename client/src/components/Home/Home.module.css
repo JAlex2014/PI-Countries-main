@@ -1,0 +1,7 @@
+.allCards{
+    background-color:rgba(199, 99, 33, 0.884);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-content: center;
+    align-items: center;
+}

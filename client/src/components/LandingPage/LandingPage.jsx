@@ -5,7 +5,7 @@ export default function LandingPage(){
     return(
         <div>
             <h1>Bienvenidos a mi Proyecto Individual</h1>
-            <Link to = "/home">
+            <Link to = "/countries">
                 <button>Ingresar</button>
             </Link>
         </div>

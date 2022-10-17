@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/index";
-import { useSelector } from "react-redux"; 
-import axios from "axios";
+import { difficulties, seasons, duration} from "../Consts";
 
 const CreateTour = () => {
 
@@ -19,7 +18,7 @@ const CreateTour = () => {
         allcountries: [],
     });
 
-    const handlerChange = (event) =>{
+    const handlerChange = (event) => {
         setState({
             ...state,
             [event.target.name]: event.target.value
@@ -35,8 +34,7 @@ const CreateTour = () => {
 
     const handlerSubmit = (event) => {
         event.preventDefault();//blablabla...
-        let newTour = dispatch(actions.createActivity(state)).payload;
-        axios.post("http://localhost:3001/activities", newTour);
+        dispatch(actions.createActivity(state));
         setState({
             name: "",
             difficulty: 0,
@@ -49,12 +47,11 @@ const CreateTour = () => {
     const handlerDelete = (event)=>{
         setState({
             ...state,
-            countries: state.countries.filter(country => country !== event.target.value)
+            countries: state.countries.filter(country => 
+                country !== event.target.value)
         })
     }
 
-    const arr_difficulties = [1,2,3,4,5];
-    const arr_seasons = ["Summer", "Spring", "Winter", "Fall"];
     const allcountries = useSelector(state => state.countries);
     
     return (
@@ -70,20 +67,23 @@ const CreateTour = () => {
                 <label>Difficulty: </label>
                 <select name="difficulty" onChange={handlerChange} value={state.difficulty}>
                     <option hidden selected>Select from 1 to 5</option>
-                    {arr_difficulties.map(number => <option key={number} value={number}>{number}</option>)}
+                    {difficulties.map(number => <option key={number} value={number}>{number}</option>)}
                 </select>
                 </div>
 
                 <div>
-                <label>Duration: </label>
-                <input type="text" name="duration" onChange={handlerChange} value={state.duration}/>
+                    <label>Duration: </label>
+                    <select name="duration" onChange={handlerChange} value={state.duration}>
+                        <option hidden selected>Set the duration</option>
+                        {duration.map(time => <option key={time} value={time}>{time}</option>)}
+                    </select>
                 </div>
 
                 <div>
                     <label>Season: </label>
                     <select name="season" onChange={handlerChange} value={state.season}>
                         <option hidden selected>Select a season</option>
-                        {arr_seasons.map(season => <option key={season} value={season}>{season}</option>)}
+                        {seasons.map(season => <option key={season} value={season}>{season}</option>)}
                     </select>
                 </div>
 
