@@ -3,6 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/index";
 import { difficulties, seasons, duration} from "../ConstsandHelpers";
 
+export const validate=(state)=>{
+    let errors={};
+    if(!state.name) errors.name="Activity name is required";
+    else if(!/^[a-zA-Z ]+$/.test(state.name))
+    errors.name="Activity name is invalid, use only letters without ñ";
+    return errors;
+}
+
 const CreateTour = () => {
 
     const dispatch = useDispatch();
@@ -18,11 +26,15 @@ const CreateTour = () => {
         allcountries: [],
     });
 
+    const [errors,setErrors] = React.useState({
+        name:"",
+    });
+
     const handlerChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value
-        })
+        const value = event.target.value;
+        const property = event.target.name;
+        setState({...state,[property]: value});
+        setErrors(validate({...state,[property]: value}));
     }
 
     const handlerSelectCountry = (event) => {
@@ -41,9 +53,9 @@ const CreateTour = () => {
             duration: "",
             season: "",
             countries: [],
-        })
+          })
     } 
-
+ 
     const handlerDelete = (event)=>{
         setState({
             ...state,
@@ -58,9 +70,14 @@ const CreateTour = () => {
         <div>
             <form onSubmit={handlerSubmit}>
                 <div>
-                <label>Name: </label>
-                <input type="text" name="name" onChange={handlerChange} 
-                        placeholder={"Here goes the activity's name"} value={state.name}/>
+                <label htmlFor="name">Name: </label>
+                <input  type="text" 
+                        name="name"
+                        onChange={handlerChange} 
+                        placeholder={"Here goes the activity's name"} 
+                        value={state.name}
+                        className={errors.password && "danger"} />
+                        {errors.name &&<p className='danger'>{errors.name}</p> }
                 </div>
                 
                 <div>
@@ -94,16 +111,24 @@ const CreateTour = () => {
                         {allcountries.map(country => 
                             <option key={country.id} value={country.name}>{country.name}</option>)}
                     </select>
+                    {!state.countries.length &&<p>Select at least one Country</p>}
                 </div>
                 <div>
                     {state.countries.map(country =>
                          <div key={country}>{country}
                             <button value={country} onClick={handlerDelete}>X</button>
                          </div>
-                        )}
+                    )}
                 </div>
-
-                <button type="submit">Create Activity</button>
+                <div>
+                    <button
+                        disabled={!state.name || errors.name || !state.difficulty || !state.duration || !state.season || !state.countries.length}
+                        onClick ={event=>{event.target.disabled=true}} 
+                        type="submit">Create Activity
+                    </button>
+                    {(!state.name || errors.name || !state.difficulty || !state.duration || !state.season || !state.countries.length) && 
+                    <p className='danger'>One or more fields are empty</p>}
+                </div>
             </form>
         </div>
     ) 

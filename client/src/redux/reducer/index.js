@@ -52,10 +52,10 @@ const rootReducer = (state = initialState, action) => {
                 countries: filterstatus
             };
         case FILTER_BY_ACTIVITIES:
-            const all_countries = state.allcountries;
+            const all_countries2 = state.countries;
             const filtercountries = action.payload === "All"? 
-            all_countries.filter(country => country.tours.length > 0): 
-            all_countries.filter(country => country.tours.find(tour => 
+            all_countries2.filter(country => country.tours.length > 0): 
+            all_countries2.filter(country => country.tours.find(tour => 
                 tour.name === action.payload));
             return {
                 ...state,

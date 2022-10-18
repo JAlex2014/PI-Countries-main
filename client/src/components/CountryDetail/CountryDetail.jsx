@@ -40,8 +40,6 @@ const CountryDetail = (props) => {
                         <hr/>
                     </div>
                 )}
-            
-            {console.log(countryDetail)}
         </div>
     )
 };
