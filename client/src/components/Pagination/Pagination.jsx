@@ -12,7 +12,7 @@ const Pagination = ({countriesPerPage, countries, paginadoHandler}) => {
                 {
                     pageNumbers?.map(number => (
                     <div  key={number}>
-                    <button  onClick={()=>paginadoHandler(number)}>{number}</button>
+                    <button className={Style.button} onClick={()=>paginadoHandler(number)}>{number}</button>
                     </div>))
                 }
             </ul>

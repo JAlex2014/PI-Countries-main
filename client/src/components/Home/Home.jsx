@@ -14,7 +14,10 @@ const Home = () => {
     
     //Defino estados y constantes para usar en el paginado
     const [currentPage,setcurrentPage] = useState(1);
-    const [countriesPerPage] = useState(10);
+    // eslint-disable-next-line
+    const [orden, setOrden] = useState('');
+    // eslint-disable-next-line
+    const [countriesPerPage, setcountriesPerPage] = useState(10);
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     
@@ -29,8 +32,8 @@ const Home = () => {
     //React.useEffect(() => {dispatch(actions.getCountriesSummary(input))},[dispatch, input]);
         return(
             <div>
-                <Search setcurrentPage={setcurrentPage}/>
-                <FiltersnOrdering setcurrentPage={setcurrentPage}/>
+                <Search setcurrentPage={setcurrentPage} />
+                <FiltersnOrdering setcurrentPage={setcurrentPage} setOrden={setOrden}/>
                 <Pagination countriesPerPage={countriesPerPage}
                 countries={countries.length}
                 paginadoHandler={paginadoHandler}/> 
@@ -41,7 +44,8 @@ const Home = () => {
                         name = {country.name}
                         id = {country.id}
                         img = {country.flag_img}
-                        continent = {country.continent}/>)}
+                        continent = {country.continent}
+                        population= {country.population}/>)}
                     </>
                 </div>
             </div>

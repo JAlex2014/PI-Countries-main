@@ -2,10 +2,12 @@ import React from "react";
 import * as actions from "./../../redux/actions/index";
 import { useSelector } from "react-redux"; // ≈ a mapStatetoProps
 import { useDispatch } from "react-redux"; // ≈ a mapDispatchtoProps
+import { useHistory } from "react-router-dom";
 
 const CountryDetail = (props) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const CountryId = props.match.params.id;
 
@@ -18,6 +20,7 @@ const CountryDetail = (props) => {
 
     return(
         <div>
+            <button onClick={()=>history.goBack()}>Back</button>
             <h1>{countryDetail.name}</h1>
             <img src={countryDetail.flag_img} alt="Default png"/>
             <h2>{countryDetail.continent}</h2>

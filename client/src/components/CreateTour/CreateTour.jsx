@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/index";
-import { difficulties, seasons, duration} from "../Consts";
+import { difficulties, seasons, duration} from "../ConstsandHelpers";
 
 const CreateTour = () => {
 

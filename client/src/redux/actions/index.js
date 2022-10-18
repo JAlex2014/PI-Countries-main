@@ -8,6 +8,8 @@ export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_BY_ACTIVITIES = "FILTER_BY_ACTIVITIES";
 export const ORDER_BY_ABC = "ORDER_BY_ABC";
+export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
+
 
 export const getAllCountries = () => {
     return async function(dispatch){
@@ -54,5 +56,9 @@ export const filterCountriesByActivities = (payload) => {
 
 export const OrderbyABCs = (payload) => {
     return {type: ORDER_BY_ABC, payload}
+};
+
+export const OrderbyPopulation = (payload) => {
+    return {type: ORDER_BY_POPULATION, payload}
 };
 

@@ -5,6 +5,8 @@ import {CREATE_ACTIVITY} from '../actions/index';
 import {GET_COUNTRIES_SUMMARY} from '../actions/index';
 import {FILTER_BY_CONTINENT} from '../actions/index';
 import {FILTER_BY_ACTIVITIES} from '../actions/index';
+import {ORDER_BY_ABC} from '../actions/index';
+import {ORDER_BY_POPULATION} from '../actions/index';
 
 const initialState = {
     allcountries:[],
@@ -53,11 +55,40 @@ const rootReducer = (state = initialState, action) => {
             const all_countries = state.allcountries;
             const filtercountries = action.payload === "All"? 
             all_countries.filter(country => country.tours.length > 0): 
-            all_countries.filter(country => country.tours.find(tour => tour.name === action.payload));
+            all_countries.filter(country => country.tours.find(tour => 
+                tour.name === action.payload));
             return {
                 ...state,
                 countries: filtercountries
             };
+        case ORDER_BY_ABC:
+            let sortedArr = action.payload === "up"?
+            state.countries.sort((country1,country2)=>{
+                if(country1.name > country2.name) return 1;
+                if(country2.name > country1.name) return -1;
+                return 0}):
+            state.countries.sort((country1,country2)=>{
+                if(country1.name > country2.name) return -1;
+                if(country2.name > country1.name) return 1;
+                return 0})
+            return {
+                ...state,
+                countries: sortedArr
+            };
+        case ORDER_BY_POPULATION:
+            let sortedArr2 = action.payload === "less"?
+            state.countries.sort((country1,country2)=>{
+                if(country1.population > country2.population) return 1;
+                if(country2.population > country1.population) return -1;
+                return 0}):
+            state.countries.sort((country1,country2)=>{
+                if(country1.population > country2.population) return -1;
+                if(country2.population > country1.population) return 1;
+                return 0})
+            return {
+                ...state,
+                countries: sortedArr2
+            }
         default:
             return{
                 ...state

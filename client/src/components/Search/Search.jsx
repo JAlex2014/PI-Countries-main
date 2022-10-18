@@ -19,7 +19,6 @@ export default function Search({setcurrentPage}) {
         setinput('');
     };
 
-
     return( 
         <div>
             <input type='text' placeholder={'Find your country...'} 

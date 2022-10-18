@@ -1,7 +1,28 @@
 .numbers{
-    background-color:whitesmoke;
+    background-color:white;
     display: flex;
     align-items: center;
+    padding: 0px;
     justify-content: center;
     flex-direction: row;
+}
+
+.button{
+    float: left;
+    padding: 0 14px;
+    line-height: 34px;
+    color: black;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 1;
+}
+.button:hover{
+    background: black;
+    color: white;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.button:focus{
+    background: black;
+    color: white;
 }
