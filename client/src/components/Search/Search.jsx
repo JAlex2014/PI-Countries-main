@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {getCountriesSummary} from './../../redux/actions/index';
 import { useDispatch } from 'react-redux';
+import Style from './Search.module.css'
 
 export default function Search({setcurrentPage}) {
 
     const [input, setinput] = useState('');
-
+    
     const dispatch = useDispatch();
 
     const searchInputHandler = (event) => {
@@ -20,10 +21,10 @@ export default function Search({setcurrentPage}) {
     };
 
     return( 
-        <div>
-            <input type='text' placeholder={'Find your country...'} 
-                onChange={searchInputHandler} value={input}/>
+        <div className={Style.inputsearch} >
             <button type="submit" onClick={clickHandler}>Search</button>
+            <input type='text' placeholder={'Find your country...'} 
+                    onChange={searchInputHandler} value={input}/>
         </div>
     )
 }; 

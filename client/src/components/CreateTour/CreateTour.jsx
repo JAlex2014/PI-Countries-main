@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/index";
 import { difficulties, seasons, duration} from "../ConstsandHelpers";
+import Style from "./CreateTour.module.css";
 
 export const validate=(state)=>{
     let errors={};
@@ -54,6 +55,7 @@ const CreateTour = () => {
             season: "",
             countries: [],
           })
+        alert('The activity has been created successfully');
     } 
  
     const handlerDelete = (event)=>{
@@ -67,7 +69,7 @@ const CreateTour = () => {
     const allcountries = useSelector(state => state.countries);
     
     return (
-        <div>
+        <div className={Style.main}>
             <form onSubmit={handlerSubmit}>
                 <div>
                 <label htmlFor="name">Name: </label>
@@ -76,8 +78,8 @@ const CreateTour = () => {
                         onChange={handlerChange} 
                         placeholder={"Here goes the activity's name"} 
                         value={state.name}
-                        className={errors.password && "danger"} />
-                        {errors.name &&<p className='danger'>{errors.name}</p> }
+                        className={errors.password && Style.danger} />
+                        {errors.name &&<p className={Style.danger}>{errors.name}</p> }
                 </div>
                 
                 <div>
@@ -123,7 +125,7 @@ const CreateTour = () => {
                 <div>
                     <button
                         disabled={!state.name || errors.name || !state.difficulty || !state.duration || !state.season || !state.countries.length}
-                        onClick ={event=>{event.target.disabled=true}} 
+                        
                         type="submit">Create Activity
                     </button>
                     {(!state.name || errors.name || !state.difficulty || !state.duration || !state.season || !state.countries.length) && 

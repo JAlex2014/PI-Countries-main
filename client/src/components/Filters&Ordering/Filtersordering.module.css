@@ -1,0 +1,75 @@
+.main {
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.main select {
+    margin-top: 6px;
+    margin-right: 2px;
+    background-color: white;
+    border: thin solid black;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    font-size: small;
+    line-height: 1.5em;
+    padding: 0.5em 2.5em 0.2em 0.6em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+  }
+  
+  .select{
+    cursor: pointer;
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 72%);
+    background-position:
+    calc(100% - 20px) calc(0.9em + 2px),
+    calc(100% - 15px) calc(0.9em + 2px),
+    calc(100% - .76em) .5em;
+    background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+    background-repeat: no-repeat;
+    
+  } 
+
+  .select:focus {
+      background-image:
+      linear-gradient(45deg, white 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, white 50%),
+      radial-gradient(gray 70%, transparent 72%);
+      background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      calc(100% - .76em) .5em;
+      background-size:
+      5px 5px,
+      5px 5px,
+      1.5em 1.5em;
+      background-repeat: no-repeat;
+      border-color: green;
+      outline: 0;
+  }
+  
+  .button {
+      margin-top: 6px;
+      display: inline-block;
+      padding: 0.4em 1em 0.4em 1em; 
+      background: #ddd;
+      font-size: 15px;
+      border-radius: 5px;
+      border-width: 0.05rem;
+      cursor: pointer; 
+  }
+
+  .button:hover {
+      background: gray;
+      color: white;
+      transition: 0.8s; 
+  }

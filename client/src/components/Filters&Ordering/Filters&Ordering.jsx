@@ -8,6 +8,7 @@ import {filterCountriesByContinent} from "../../redux/actions/index";
 import {filterCountriesByActivities} from "../../redux/actions/index";
 import {OrderbyABCs} from "../../redux/actions/index"; 
 import {OrderbyPopulation} from "../../redux/actions/index";
+import Style from "./Filtersordering.module.css";
 
 const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
     const history = useHistory();
@@ -61,26 +62,30 @@ const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
     [dispatch]);
 
     return(
-        <div>
-            <select onChange={handlerOrdering}>
-                <option hidden selected>Order by</option>
+        <div className={Style.main}>
+            
+            <select className={Style.select} onChange={handlerOrdering}>
+                
+                <option  hidden selected>Order by</option>
                 <option value="up">From Albania to Zimbabwe</option>
                 <option value="down">From Zimbabwe to Albania</option>
                 <option value="more">From most to least populated</option>
                 <option value="less">From least to most populated</option>
+               
             </select>
-            <select onChange={handlerFilterContinent}> 
+            
+            <select className={Style.select} onChange={handlerFilterContinent}> 
                 <option hidden selected>Filter by Region</option>
                 {continents.map(continent =>
                     <option key={continent} value={continent}>{continent}</option>)}
             </select>
-            <select onChange={handlerFilterActivities}>
+            <select className={Style.select} onChange={handlerFilterActivities}>
                 <option hidden selected>Filter by Activities</option>
                 <option value="All">All activities</option>
                 {activities.map(activitie =>
                     <option key={activitie.id} value={activitie.name}>{activitie.name}</option>)}
             </select>
-            <button onClick={handlerClearFilter}>Clear Filters</button>
+            <button className={Style.button} onClick={handlerClearFilter}>Clear Filters</button>
         </div>
     )
 }

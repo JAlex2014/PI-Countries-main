@@ -7,19 +7,27 @@ import {FILTER_BY_CONTINENT} from '../actions/index';
 import {FILTER_BY_ACTIVITIES} from '../actions/index';
 import {ORDER_BY_ABC} from '../actions/index';
 import {ORDER_BY_POPULATION} from '../actions/index';
+import {LOADING} from '../actions/index';
 
 const initialState = {
     allcountries:[],
     countries: [],
     countryDetail: {},
     activities: [],
+    loading: true,
 };
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+        case LOADING:
+            return{
+                ...state,
+                loading: true,
+            }
         case GET_ALL_COUNTRIES:
             return{
                 ...state,
+                loading: false,
                 countries: action.payload,
                 allcountries: action.payload
             };
@@ -52,7 +60,7 @@ const rootReducer = (state = initialState, action) => {
                 countries: filterstatus
             };
         case FILTER_BY_ACTIVITIES:
-            const all_countries2 = state.countries;
+            const all_countries2 = state.allcountries;
             const filtercountries = action.payload === "All"? 
             all_countries2.filter(country => country.tours.length > 0): 
             all_countries2.filter(country => country.tours.find(tour => 
@@ -89,6 +97,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: sortedArr2
             }
+            
         default:
             return{
                 ...state

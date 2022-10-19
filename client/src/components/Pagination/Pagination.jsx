@@ -12,7 +12,9 @@ const Pagination = ({countriesPerPage, countries, paginadoHandler}) => {
                 {
                     pageNumbers?.map(number => (
                     <div  key={number}>
-                    <button className={Style.button} onClick={()=>paginadoHandler(number)}>{number}</button>
+                    <button type="button"
+                      className={Style.button} 
+                      autofocus onClick={()=>paginadoHandler(number)}>{number}</button>
                     </div>))
                 }
             </ul>
@@ -21,3 +23,7 @@ const Pagination = ({countriesPerPage, countries, paginadoHandler}) => {
 };
 
 export default Pagination;
+
+/* return <button 
+className={number === actualPage ? styles.pagActual : styles.pagOther} 
+onClick={() => paginado(number)} key={number}>{number}</button> */

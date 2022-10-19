@@ -1,8 +1,25 @@
+.home{
+    /* position: relative;
+    background-image: url("https://images.pexels.com/photos/7412072/pexels-photo-7412072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    -webkit-background-size: cover;
+    -moz-background-size: cover; 
+    -o-background-size: cover;
+    background-size: cover;   */
+}
+
 .allCards{
-    background-color:rgba(199, 99, 33, 0.884);
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    /* display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     align-content: center;
-    align-items: center;
-    
+    align-items: center;  */
+}
+
+.filtersandpag{
+    margin-top: 52px;
+    padding-right: 2em;
+    justify-content:center
+
 }

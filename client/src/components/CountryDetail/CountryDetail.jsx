@@ -3,7 +3,7 @@ import * as actions from "./../../redux/actions/index";
 import { useSelector } from "react-redux"; // ≈ a mapStatetoProps
 import { useDispatch } from "react-redux"; // ≈ a mapDispatchtoProps
 import { useHistory } from "react-router-dom";
-
+import NotFound from "../NotFound/NotFound";
 const CountryDetail = (props) => {
 
     const dispatch = useDispatch();
@@ -21,16 +21,17 @@ const CountryDetail = (props) => {
     return(
         <div>
             <button onClick={()=>history.goBack()}>Back</button>
-            <h1>{countryDetail.name}</h1>
-            <img src={countryDetail.flag_img} alt="Default png"/>
-            <h2>{countryDetail.continent}</h2>
-            <h3>Country ID: {countryDetail.id}</h3>
-            <h3>Capital: {countryDetail.capital}</h3>
-            <h3>Subregion: {countryDetail.subregion?countryDetail.subregion:"None"}</h3>
-            <h3>Area: {`${new Intl.NumberFormat('en-US').format(countryDetail.area)} km²`}</h3>
-            <h3>Population: {new Intl.NumberFormat('en-US').format(countryDetail.population)}</h3>
-            <h3>Tours:</h3>
-            <hr/>
+            {Object.entries(countryDetail).length === 0?<NotFound/>:
+            <div>
+                <h1>{countryDetail.name}</h1>
+                <img src={countryDetail.flag_img} alt="Default png"/>
+                <h2>{countryDetail.continent}</h2>
+                <h3>Country ID: {countryDetail.id}</h3>
+                <h3>Capital: {countryDetail.capital}</h3>
+                <h3>Subregion: {countryDetail.subregion?countryDetail.subregion:"None"}</h3>
+                <h3>Area: {`${new Intl.NumberFormat('en-US').format(countryDetail.area)} km²`}</h3>
+                <h3>Population: {new Intl.NumberFormat('en-US').format(countryDetail.population)}</h3>
+                <h3>Tours:</h3>
                 {countryDetail.tours?.map(tour => 
                     <div>
                         <p>Activity name: {tour.name}</p>
@@ -40,6 +41,7 @@ const CountryDetail = (props) => {
                         <hr/>
                     </div>
                 )}
+            </div>}
         </div>
     )
 };

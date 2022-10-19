@@ -1,5 +1,5 @@
 .numbers{
-    background-color:white;
+    background: transparent;
     display: flex;
     align-items: center;
     padding: 0px;
@@ -16,13 +16,18 @@
     border: 1px solid #ddd;
     border-left-width: 1;
 }
+
 .button:hover{
     background: black;
     color: white;
     transition: 0.7s;
     cursor: pointer;
 }
+
 .button:focus{
     background: black;
     color: white;
 }
+
+
+
