@@ -1,4 +1,10 @@
-.CountryCard{
+.Container{
+    margin-top: 45px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+.activitie{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: antiquewhite;
     height: 410px;
@@ -12,44 +18,15 @@
     align-items: center;
     opacity: 0.8;
     position: relative; 
+    block-size: fit-content;
     justify-content: space-between;
     flex-direction: column;
     /* height: 100vh; */
     display: flex;
 }
 
-.namecountry{
-    text-decoration: none;
-}
-
-.CountryCard:hover {
+.activitie:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     scale: 1.1;
     opacity: 1;
-}
-
-.detailbutton{
-    padding: 8px;
-    color: white;
-    background-color: rgb(31, 28, 28);
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 15px;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-.Link{
-    background-color: rgb(31, 28, 28);
-    width: 100%;
-}
-
-.img{
-    border-radius: 5%;
-    align-content: center;
-    max-width: 220px; 
-    max-height: 155px;
-    
 }

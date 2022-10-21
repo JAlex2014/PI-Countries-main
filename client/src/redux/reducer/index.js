@@ -70,21 +70,55 @@ const rootReducer = (state = initialState, action) => {
                 countries: filtercountries
             };
         case ORDER_BY_ABC:
-            let sortedArr = action.payload === "up"?
-            state.countries.sort((country1,country2)=>{
-                if(country1.name > country2.name) return 1;
-                if(country2.name > country1.name) return -1;
-                return 0}):
-            state.countries.sort((country1,country2)=>{
-                if(country1.name > country2.name) return -1;
-                if(country2.name > country1.name) return 1;
-                return 0})
+            let sortedArraux1 = [];
+            let sortedArraux2 = [];  
+            if(action.payload === "up"){
+                sortedArraux1 = state.countries.sort((country1,country2)=>{
+                    if(country1.name > country2.name) return 1;
+                    if(country2.name > country1.name) return -1;
+                    return 0});
+                sortedArraux2 = state.allcountries.sort((country1,country2)=>{
+                    if(country1.name > country2.name) return 1;
+                    if(country2.name > country1.name) return -1;
+                    return 0});
+            }else{
+                sortedArraux1 = state.countries.sort((country1,country2)=>{
+                    if(country1.name > country2.name) return -1;
+                    if(country2.name > country1.name) return 1;
+                    return 0});
+                sortedArraux2 = state.allcountries.sort((country1,country2)=>{
+                    if(country1.name > country2.name) return -1;
+                    if(country2.name > country1.name) return 1;
+                    return 0});
+            }
             return {
                 ...state,
-                countries: sortedArr
+                countries: sortedArraux1,
+                allcountries: sortedArraux2
             };
         case ORDER_BY_POPULATION:
-            let sortedArr2 = action.payload === "less"?
+            let sortedBArraux1 = [];
+            let sortedBArraux2 = [];
+            if(action.payload === "less"){
+                sortedBArraux1 = state.countries.sort((country1,country2)=>{
+                    if(country1.population > country2.population) return 1;
+                    if(country2.population > country1.population) return -1;
+                    return 0});
+                sortedBArraux2 = state.allcountries.sort((country1,country2)=>{
+                    if(country1.population > country2.population) return 1;
+                    if(country2.population > country1.population) return -1;
+                    return 0});
+            }else{
+                sortedBArraux1 = state.countries.sort((country1,country2)=>{
+                    if(country1.population > country2.population) return -1;
+                    if(country2.population > country1.population) return 1;
+                    return 0});
+                sortedBArraux2 = state.allcountries.sort((country1,country2)=>{
+                    if(country1.population > country2.population) return -1;
+                    if(country2.population > country1.population) return 1;
+                    return 0});
+            }
+            /* let sortedArr2 = action.payload === "less"?
             state.countries.sort((country1,country2)=>{
                 if(country1.population > country2.population) return 1;
                 if(country2.population > country1.population) return -1;
@@ -92,12 +126,12 @@ const rootReducer = (state = initialState, action) => {
             state.countries.sort((country1,country2)=>{
                 if(country1.population > country2.population) return -1;
                 if(country2.population > country1.population) return 1;
-                return 0})
+                return 0}) */
             return {
                 ...state,
-                countries: sortedArr2
+                countries: sortedBArraux1,
+                allcountries: sortedBArraux2
             }
-            
         default:
             return{
                 ...state

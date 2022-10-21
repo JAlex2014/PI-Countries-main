@@ -22,24 +22,24 @@ const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
                 dispatch(OrderbyABCs(event.target.value))
                 setcurrentPage(1);
                 setOrden(`Ordenado ${event.target.value}`)
-                return;
+                break;
             case "down":
                 dispatch(OrderbyABCs(event.target.value))
                 setcurrentPage(1);
                 setOrden(`Ordenado ${event.target.value}`)
-                return; 
+                break; 
             case "more":
                 dispatch(OrderbyPopulation(event.target.value))
                 setcurrentPage(1);
                 setOrden(`Ordenado ${event.target.value}`)
-                return;
+                break;
             case "less":
                 dispatch(OrderbyPopulation(event.target.value))
                 setcurrentPage(1);
                 setOrden(`Ordenado ${event.target.value}`)
-                return;
+                break;
             default:
-                return;
+                break;
         }
     };
 
@@ -63,28 +63,27 @@ const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
 
     return(
         <div className={Style.main}>
-            
-            <select className={Style.select} onChange={handlerOrdering}>
-                
-                <option  hidden selected>Order by</option>
+            <select defaultValue="default" className={Style.select} onChange={handlerOrdering}>
+                <option hidden value="default">Order by</option>
                 <option value="up">From Albania to Zimbabwe</option>
                 <option value="down">From Zimbabwe to Albania</option>
                 <option value="more">From most to least populated</option>
                 <option value="less">From least to most populated</option>
-               
             </select>
             
-            <select className={Style.select} onChange={handlerFilterContinent}> 
-                <option hidden selected>Filter by Region</option>
+            <select defaultValue="default" className={Style.select} onChange={handlerFilterContinent}> 
+                <option hidden value="default">Filter by Region</option>
                 {continents.map(continent =>
                     <option key={continent} value={continent}>{continent}</option>)}
             </select>
-            <select className={Style.select} onChange={handlerFilterActivities}>
-                <option hidden selected>Filter by Activities</option>
+
+            <select defaultValue="default" className={Style.select} onChange={handlerFilterActivities}>
+                <option hidden value="default">Filter by Activities</option>
                 <option value="All">All activities</option>
                 {activities.map(activitie =>
                     <option key={activitie.id} value={activitie.name}>{activitie.name}</option>)}
             </select>
+
             <button className={Style.button} onClick={handlerClearFilter}>Clear Filters</button>
         </div>
     )

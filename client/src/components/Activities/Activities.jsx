@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllActivities } from "../../redux/actions/index";
+import Style from "./Activities.module.css";
 
 const Activities = () => {
     const dispatch = useDispatch();
@@ -9,10 +10,10 @@ const Activities = () => {
     [dispatch]);
 
     return(
-        <div>
+        <div className={Style.Container}>
             <h1>Tours around the world</h1>
                 {activities.map(activitie =>(
-                    <div>
+                    <div className={Style.activitie}>
                         <h3>{activitie.name}</h3>
                         <p>{`Difficulty: ${activitie.difficulty}/5`}</p>
                         <p>{`Duration: ${activitie.duration}`}</p>

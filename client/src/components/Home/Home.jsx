@@ -1,7 +1,7 @@
 import * as actions from  "./../../redux/actions/index";
 import React from "react";
 import {useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch } from "react-redux";
 import CountryCard from "../CountryCard/CountryCard";
 import FiltersnOrdering from "../Filters&Ordering/Filters&Ordering";
 import NotFound from "../NotFound/NotFound.jsx";
@@ -11,7 +11,6 @@ import Style from "./Home.module.css"
 
 const Home = () => {
     const dispatch = useDispatch();
-    
     const countries = useSelector(state => state.countries);
     const loading = useSelector(state => state.loading);
     //Defino este estado para poder renderizar los ordenamientos 
@@ -21,11 +20,15 @@ const Home = () => {
     //Defino este estado y constantes para usar en el paginado
     const [currentPage,setcurrentPage] = useState(1);
     // eslint-disable-next-line
-    const [countriesPerPage, setcountriesPerPage] = useState(10);
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    const [countriesPerPage, setcountriesPerPage] = useState(9.99);
     
-    const currentCountries = countries.slice(indexOfFirstCountry,indexOfLastCountry); 
+    const indexOfLastCountry = currentPage * countriesPerPage;//10
+    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;//0
+    
+    const currentCountries = currentPage===1?countries.slice(0,9):
+    currentPage===26?countries.slice(249,countries.length):
+    countries.slice(indexOfFirstCountry,indexOfLastCountry); 
+
     const paginadoHandler = (pageNumber) => {
         setcurrentPage(pageNumber)
     }
@@ -42,7 +45,7 @@ const Home = () => {
                 <Pagination countriesPerPage={countriesPerPage}
                 countries={countries.length}
                 paginadoHandler={paginadoHandler}
-                />   
+                />  
             </div>     
             <div className={currentCountries.length && Style.allCards}> 
                 {loading?(<Loading/>):currentCountries.length? 
