@@ -1,8 +1,9 @@
 .main {
     font-family: Arial;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 30px;
+    align-items: flex-start;
+    margin-top: 50px;
   }
 
 .main select {

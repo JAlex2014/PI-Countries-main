@@ -9,8 +9,8 @@ module.exports = (sequelize)=>{
         },
         difficulty:{
             type: DataTypes.INTEGER,
-            defaultValue:0,
-            validate:{min:0,max:5}
+            defaultValue:1,
+            validate:{min:1,max:5}
         },
         duration:{
             type: DataTypes.STRING,

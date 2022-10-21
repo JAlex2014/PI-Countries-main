@@ -35,7 +35,7 @@ const CreateTour = () => {
         else if(name_repeated.length) errors.name=`The activity >>${state.name}<< was already created`;
         else if(!regex.test(state.name))
         errors.name="Activity name is invalid, simbols or one character are not allowed";
-        
+        console.log(name_repeated);
         return errors;
     }
     
@@ -89,13 +89,14 @@ const CreateTour = () => {
             <form className={Style.form} onSubmit={handlerSubmit}>
                 <div className={Style.containerA}>
                     <label className={Style.label}>Name: </label>
-                        <input  type="text" 
+                        <input type="text" 
                             name="name"
                             onChange={handlerChangeName} 
                             placeholder={"Here goes the activity's name"} 
                             value={state.name}
-                            className={Style.inputname} />
-                            {errors.name &&<p className={Style.danger}>{errors.name}</p> }
+                            className={Style.inputname}
+                            required/>
+                            {errors.name &&<p className={Style.danger}>{errors.name}</p>}
                 
                     <label className={Style.label}>Difficulty: </label>
                         <div className={Style.select}>

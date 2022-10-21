@@ -4,6 +4,7 @@ import {useState } from "react";
 import {useSelector, useDispatch } from "react-redux";
 import CountryCard from "../CountryCard/CountryCard";
 import FiltersnOrdering from "../Filters&Ordering/Filters&Ordering";
+import Search from "../Search/Search";
 import NotFound from "../NotFound/NotFound.jsx";
 import Pagination from "../Pagination/Pagination";
 import Loading from "../Loading/Loading";
@@ -30,33 +31,35 @@ const Home = () => {
     countries.slice(indexOfFirstCountry,indexOfLastCountry); 
 
     const paginadoHandler = (pageNumber) => {
-        setcurrentPage(pageNumber)
-    }
-    
+        setcurrentPage(pageNumber);
+    };
+   
     React.useEffect(() => {dispatch(actions.getAllCountries())},
     [dispatch]);
     
     return(
         <div className={Style.home}>
             <div className={Style.filtersandpag}>
-                <FiltersnOrdering 
-                setcurrentPage={setcurrentPage} 
-                setOrden={setOrden}/>
-                <Pagination countriesPerPage={countriesPerPage}
-                countries={countries.length}
-                paginadoHandler={paginadoHandler}
+                <Search setcurrentPage={setcurrentPage}/>
+                <FiltersnOrdering   setcurrentPage={setcurrentPage} 
+                                    setOrden={setOrden}
+                />
+                <Pagination     countriesPerPage={countriesPerPage}
+                                countries={countries.length}
+                                paginadoHandler={paginadoHandler}
+                                setcurrentPage={setcurrentPage}
+                                currentPage={currentPage}
                 />  
             </div>     
             <div className={currentCountries.length && Style.allCards}> 
                 {loading?(<Loading/>):currentCountries.length? 
                     currentCountries.map(country => 
-                    <CountryCard 
-                        key = {country.id}
-                        name = {country.name}
-                        id = {country.id}
-                        img = {country.flag_img}
-                        continent = {country.continent}
-                        population= {country.population}
+                    <CountryCard    key = {country.id}
+                                    name = {country.name}
+                                    id = {country.id}
+                                    img = {country.flag_img}
+                                    continent = {country.continent}
+                                    population= {country.population}
                 />):<NotFound/>} 
             </div> 
         </div>

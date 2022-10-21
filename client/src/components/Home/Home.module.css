@@ -1,10 +1,5 @@
 .home{
-    /* position: relative;
-    background-image: url("https://images.pexels.com/photos/7412072/pexels-photo-7412072.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    -webkit-background-size: cover;
-    -moz-background-size: cover; 
-    -o-background-size: cover;
-    background-size: cover;   */
+    
 }
 
 .allCards{
@@ -14,8 +9,9 @@
 }
 
 .filtersandpag{
+    /* background-color: rgb(32, 31, 31); */
     margin-top: 52px;
     padding-right: 2em;
-    justify-content:center
-
+    padding-bottom: 0.7em;
+    justify-content: center
 }

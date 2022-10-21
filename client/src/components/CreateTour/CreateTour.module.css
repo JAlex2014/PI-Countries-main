@@ -29,8 +29,9 @@
     box-shadow: 5px 5px 8px #cbced1, -5px -5px 8px white;
 }
 
-.containerA:hover{
+.containerA:hover,.containerB:hover{
     cursor: pointer;
+    opacity: 90%;
 }
 .containerB{
     margin: auto;
@@ -66,6 +67,10 @@
     border: none;
     outline: none;
     box-sizing: border-box;
+    font-weight: bold;
+    color:#438ed8;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .labelB{
@@ -78,9 +83,16 @@
     border: none;
     outline: none;
     box-sizing: border-box;
+    font-weight: bold;
+    color:#438ed8;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 .danger{
-    color: red;
+    color: rgb(240, 52, 52);
+    font-weight: bold;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .inputname{
@@ -106,15 +118,6 @@
     font-weight: bold;
 }
 
-.dropdown.open{
-    background-color: DodgerBlue;
-    border: 6px solid transparent;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    color: #ffffff;
-}
 
 .title{
     margin-top: 10px;
