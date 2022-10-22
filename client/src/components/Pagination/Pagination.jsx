@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import Style from "./Pagination.module.css"
 
-
 const Pagination = ({countriesPerPage, countries, paginadoHandler, setcurrentPage,currentPage }) => {
     const pageNumbers = [];
 
@@ -37,22 +36,24 @@ const Pagination = ({countriesPerPage, countries, paginadoHandler, setcurrentPag
         pageNumbers.push(i+1);
     }
 
-   
-
     return(
         <div className={Style.container}>
-            <button  className={Style.buttonprev}onClick={handlePrev} disabled={currentPage === 1}>Prev</button>
+            <button     className={Style.buttonprevnext} 
+                        onClick={handlePrev} 
+                        disabled={currentPage === 1}>Prev</button>
             <ul className={Style.numbers}>
                 {
                     pageNumbers?.map(number => (
                     <div  key={number}>
-                    <button name={number} value={currentPage}
-                        className={activated[number]?Style.buttonactual : Style.button} 
-                        onClick={(event) => handlerClick(event,number)}>{number}</button>
+                        <button name={number} value={currentPage}
+                                className={activated[number]?Style.buttonactual : Style.button} 
+                                onClick={(event) => handlerClick(event,number)}>{number}</button>
                     </div>))
                 }
             </ul>
-            <button onClick={handleNext} disabled={currentPage === Math.ceil(countries/countriesPerPage)}>Next</button>
+            <button     className={Style.buttonprevnext} 
+                        onClick={handleNext} 
+                        disabled={!countries || (currentPage === Math.ceil(countries/countriesPerPage))}>Next</button>
         </div>
     )
 };

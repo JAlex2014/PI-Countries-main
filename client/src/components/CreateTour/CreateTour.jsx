@@ -89,45 +89,49 @@ const CreateTour = () => {
             <form className={Style.form} onSubmit={handlerSubmit}>
                 <div className={Style.containerA}>
                     <label className={Style.label}>Name: </label>
-                        <input type="text" 
-                            name="name"
-                            onChange={handlerChangeName} 
-                            placeholder={"Here goes the activity's name"} 
-                            value={state.name}
-                            className={Style.inputname}
-                            required/>
-                            {errors.name &&<p className={Style.danger}>{errors.name}</p>}
+                        <input  type="text" 
+                                name="name"
+                                onChange={handlerChangeName} 
+                                placeholder={"Here goes the activity's name"} 
+                                value={state.name}
+                                className={Style.inputname}
+                                required/>
+                                {/*Renderizo un parrafo que indica el tipo de error del input del name*/}
+                                {errors.name &&<p className={Style.danger}>{errors.name}</p>}
                 
                     <label className={Style.label}>Difficulty: </label>
                         <div className={Style.select}>
                             <select className={Style.dropdown} 
-                                name="difficulty" 
-                                onChange={handlerChange} 
-                                value={state.difficulty}>
+                                    name="difficulty" 
+                                    onChange={handlerChange} 
+                                    value={state.difficulty}>
                                 <option hidden selected>Select from 1 to 5</option>
-                            {difficulties.map(number => <option key={number} value={number}>{number}</option>)}
+                                {difficulties.map(number => 
+                                <option key={number} value={number}>{number}</option>)}
                             </select>
                         </div>
 
                     <label className={Style.label}>Duration: </label>
                         <div className={Style.select}>
                             <select className={Style.dropdown} 
-                                name="duration" 
-                                onChange={handlerChange} 
-                                value={state.duration}>
+                                    name="duration" 
+                                    onChange={handlerChange} 
+                                    value={state.duration}>
                                 <option hidden selected>Set the duration</option>
-                            {duration.map(time => <option key={time} value={time}>{time}</option>)}
+                                {duration.map(time => 
+                                <option key={time} value={time}>{time}</option>)}
                             </select>
                         </div>
 
                     <label className={Style.label}>Season: </label>
                         <div className={Style.select}>
                             <select className={Style.dropdown} 
-                                name="season" 
-                                onChange={handlerChange} 
-                                value={state.season}>
+                                    name="season" 
+                                    onChange={handlerChange} 
+                                    value={state.season}>
                                 <option hidden selected>Select a season</option>
-                            {seasons.map(season => <option key={season} value={season}>{season}</option>)}
+                                {seasons.map(season => 
+                                <option key={season} value={season}>{season}</option>)}
                             </select>
                         </div>
                 </div>
@@ -140,8 +144,11 @@ const CreateTour = () => {
                             {allcountries.map(country => 
                             <option key={country.id} value={country.name}>{country.name}</option>)}
                         </select>
+                        {/*Renderizo un parrafo que indica el error si no se selecciona ningún country*/}
                         {!state.countries.length &&<p className={Style.danger}>Select at least one Country</p>}
                     </div>
+                        {/*Aquí renderizo las countries seleccionadas en el "select", con un botón para poder
+                        eliminarlas si se agregan por error*/}
                     <div>
                         {state.countries.map(country =>
                         <div key={country}>{country}

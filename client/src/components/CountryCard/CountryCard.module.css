@@ -1,25 +1,37 @@
 .CountryCard{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: antiquewhite;
-    height: 410px;
+    display: flex;
+    height: 450px;
     width: 320px;
-    border-radius: 5px; 
+    border-radius: 5px;
     transition: 0.3s;
     margin-left: 38px; 
     margin-right: 18px; 
-    margin-bottom: 20px;
-   /*  align-content: center; */
+    margin-bottom: 28px;
     align-items: center;
     opacity: 0.8;
     position: relative; 
     justify-content: space-between;
     flex-direction: column;
-    /* height: 100vh; */
-    display: flex;
 }
 
 .namecountry{
     text-decoration: none;
+    font-family: cursive;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color:black;
+    height: 45px;
+    width: 90%;
+}
+.titlecontinent{
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-family: cursive;
+    font-weight: normal;
 }
 
 .CountryCard:hover {
@@ -29,6 +41,9 @@
 }
 
 .detailbutton{
+    font-weight:bold;
+    font-family: cursive;
+    text-transform: uppercase;
     padding: 8px;
     color: white;
     background-color: rgb(31, 28, 28);
@@ -37,8 +52,14 @@
     cursor: pointer;
     font-size: 15px;
     width: 100%;
-    position: relative;
     bottom: 0;
+}
+
+.numbers{
+    text-transform: uppercase;
+    font-family: cursive;
+    font-variant-numeric: oldstyle-nums;
+    font-size: 15px;
 }
 
 .Link{
@@ -47,9 +68,10 @@
 }
 
 .img{
+    justify-content: flex-start;
     border-radius: 5%;
-    align-content: center;
+    margin-top: 5px;
     max-width: 220px; 
-    max-height: 155px;
+    height: 145px;
     
 }

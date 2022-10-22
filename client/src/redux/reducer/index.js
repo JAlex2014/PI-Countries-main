@@ -44,6 +44,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_COUNTRY_DETAIL:
             return{
                 ...state,
+                loading: false,
                 countryDetail: action.payload
             };
         case CREATE_ACTIVITY:

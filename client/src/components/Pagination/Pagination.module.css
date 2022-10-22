@@ -9,6 +9,7 @@
 
 .button{
     float: left;
+    font-family: cursive;
     padding: 0 14px;
     line-height: 34px;
     color: black;
@@ -19,6 +20,7 @@
 
 .buttonactual{
     background: black;
+    font-family: cursive;
     color: white;
     float: left;
     padding: 0 14px;
@@ -28,7 +30,7 @@
     border-left-width: 1;
 }
 
-.button:hover{
+.button:hover,.buttonprevnext:hover{
     background: black;
     color: white;
     transition: 0.7s;
@@ -39,6 +41,7 @@
     background: black;
     color: white;
 }
+
 .container{
     background: transparent;
     display: flex;
@@ -48,4 +51,16 @@
     flex-direction: row;
     margin-left: 340px;
 }
+
+.buttonprevnext{
+    font-family: cursive;
+    padding: 0 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left-width: 1;
+    border-radius: 1em;
+}
+
 

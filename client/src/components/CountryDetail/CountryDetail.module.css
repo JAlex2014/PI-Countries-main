@@ -1,0 +1,96 @@
+.main{
+    margin-top: 80px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    background-image: url("https://images3.alphacoders.com/243/243417.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover; 
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+.Detail{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+}
+
+.flagContainer{
+    display: flex;
+    margin: auto;
+    margin-top: 25px;
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    opacity: 90%;
+    box-shadow: 5px 5px 8px #cbced1, -5px -5px 8px white;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.flagimg{
+    width: 350px;
+    height: 250px;
+}
+
+.countryname{
+    text-decoration: none;
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-transform: uppercase;
+    font-size: 2.5vw;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color:black;
+    height: 45px;
+    margin-bottom: 50px;
+}
+
+.dataContainer{
+    display: flex;
+    margin: auto;
+    margin-top: 25px;
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    opacity: 90%;
+    box-shadow: 5px 5px 8px #cbced1, -5px -5px 8px white;
+    justify-content: flex-start;
+    flex-direction: column;   
+}
+
+.rowContainer{
+    margin-left: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.idtitle{
+    margin-right: 15px;
+}
+
+.people{
+    margin-left: 60px;
+    scale:1.5;
+}
+
+.toursContainer{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 450px;
+}

@@ -33,6 +33,7 @@ export const getAllActivities = () => {
 export const getCountryDetail = (id) => {
     return async function(dispatch){
         try{
+            dispatch(loading());
             let response = await axios.get(`http://localhost:3001/countries/${id}`);
             return dispatch({type:GET_COUNTRY_DETAIL, payload: response.data});
         }catch(error){
