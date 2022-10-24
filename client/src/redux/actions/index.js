@@ -19,14 +19,14 @@ export const loading = () => {
 export const getAllCountries = () => {
     return async function(dispatch){
         dispatch(loading());
-        let response = await axios.get("http://localhost:3001/countries");
+        let response = await axios.get("/countries");
         return dispatch({type:GET_ALL_COUNTRIES, payload: response.data});
     };
 };
 
 export const getAllActivities = () => {
     return async function(dispatch){
-        let response = await axios.get("http://localhost:3001/activities");
+        let response = await axios.get("/activities");
         return dispatch({type:GET_ALL_ACTIVITIES, payload: response.data});
     };
 };
@@ -35,7 +35,7 @@ export const getCountryDetail = (id) => {
     return async function(dispatch){
         try{
             dispatch(loading());
-            let response = await axios.get(`http://localhost:3001/countries/${id}`);
+            let response = await axios.get(`/countries/${id}`);
             return dispatch({type:GET_COUNTRY_DETAIL, payload: response.data});
         }catch(error){
             return dispatch({type:GET_COUNTRY_DETAIL, payload: {}});
@@ -46,7 +46,7 @@ export const getCountryDetail = (id) => {
 export const getCountriesSummary = (name) =>{
     return async function(dispatch){
         try{
-            let response = await axios.get(`http://localhost:3001/countries?name=${name}`);
+            let response = await axios.get(`/countries?name=${name}`);
             return dispatch({type:GET_COUNTRIES_SUMMARY, payload: response.data});
         }catch(error){
             return dispatch({type:GET_COUNTRIES_SUMMARY, payload: []});
@@ -56,14 +56,14 @@ export const getCountriesSummary = (name) =>{
 
 export const createActivity = (values) => {
     return async function(dispatch){
-        await axios.post("http://localhost:3001/activities", values); 
+        await axios.post("/activities", values); 
         return dispatch( {type: CREATE_ACTIVITY, payload: values})
     }
 };
 
 export const deleteActivity = (name) => {
     return async function(dispatch){
-        await axios.delete("http://localhost:3001/activities", {data:{name}}); 
+        await axios.delete("/activities", {data:{name}}); 
         return dispatch( {type: DELETE_ACTIVITY, payload: name})
     }
 };
