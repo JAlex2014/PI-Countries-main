@@ -128,7 +128,7 @@
     letter-spacing: 1px;
 }
 
-.button{
+.buttonCreate{
     color: white;
     margin-top: 20px;
     background: #1DA1F2;
@@ -138,8 +138,39 @@
     font-weight: 900;
     box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
     transition: 0.5s;
+   
+   
+}
+
+.countriesContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.countryslctd{
+    font-weight:550;
+    align-items: flex-start;
+}
+
+.buttonDltCountry{
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 8px;
+    color: white;
+    background: #1DA1F2;
+    height: 25px;
+    border-radius: 5px;
+    border-width: 1px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: 0.5s;
 }
   
-.button:hover {
+.buttonCreate:hover{
     box-shadow: none;
+}
+
+.buttonDltCountry:hover {
+    color: rgb(209, 93, 93);
 }

@@ -1,4 +1,4 @@
-const {saveCountriesInDb} = require ('./src/routes/controllers');
+const {saveOrCreateCountriesInDb} = require ('./src/routes/controllers');
 //                       _oo0oo_
 //                      o8888888o
 //                      88" . "88
@@ -22,8 +22,8 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  saveCountriesInDb();
+conn.sync({ force: false }).then(() => {
+  saveOrCreateCountriesInDb(); 
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

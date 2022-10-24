@@ -70,7 +70,7 @@ const CreateTour = () => {
             season: "",
             countries: [],
           })
-        alert('The activity has been created successfully');
+        alert(`The activity ${state.name} has been created successfully`);
     } 
  
     const handlerDelete = (event)=>{
@@ -149,15 +149,17 @@ const CreateTour = () => {
                     </div>
                         {/*Aquí renderizo las countries seleccionadas en el "select", con un botón para poder
                         eliminarlas si se agregan por error*/}
-                    <div>
+                    <div className={Style.countriesContainer}>
                         {state.countries.map(country =>
-                        <div key={country}>{country}
-                            <button value={country} onClick={handlerDelete}>X</button>
+                        <div className={Style.countryslctd} key={country}>{country}
+                            <button className={Style.buttonDltCountry}
+                                    value={country} 
+                                    onClick={handlerDelete}>X</button>
                         </div>
                         )}
                     </div>
                 
-                    <button className={Style.button}
+                    <button className={Style.buttonCreate}
                         disabled={!state.name || errors.name || !state.difficulty || !state.duration || !state.season || !state.countries.length}
                         type="submit">Create Activity
                     </button>

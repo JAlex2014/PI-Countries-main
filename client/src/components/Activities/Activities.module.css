@@ -1,9 +1,14 @@
+.mainContainer{
+    margin-top: 55px;
+}
+
 .Container{
-    margin-top: 45px;
+    margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
     position: relative;
 }
+
 .activitie{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: antiquewhite;
@@ -25,8 +30,8 @@
     display: flex;
 }
 
-.activitie:hover {
+/* .activitie:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     scale: 1.1;
     opacity: 1;
-}
+} */

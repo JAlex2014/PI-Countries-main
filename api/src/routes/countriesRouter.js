@@ -1,8 +1,6 @@
 const { Router } = require("express");
-const { Country, Tours } = require("../db");
-const { findCountriesbyQuery } = require ("./controllers");
-const { findCountriesbyId } = require ("./controllers");
-const {getCountrieswithTours} = require ("./controllers");
+const { findCountriesbyQuery, findCountriesbyId,getCountrieswithTours} = require ("./controllers");
+
 const router = Router();
 
 router.get('/', async (req,res) => {
@@ -29,7 +27,7 @@ router.get('/', async (req,res) => {
         const countries_filtered = findCountriesbyId(id,countries);
         res.status(201).send(countries_filtered);
     }catch(error){
-    res.status(404).send(error.message);
+        res.status(404).send(error.message);
     }
 });
 

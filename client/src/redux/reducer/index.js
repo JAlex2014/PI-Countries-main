@@ -8,6 +8,7 @@ import {FILTER_BY_ACTIVITIES} from '../actions/index';
 import {ORDER_BY_ABC} from '../actions/index';
 import {ORDER_BY_POPULATION} from '../actions/index';
 import {LOADING} from '../actions/index';
+import {DELETE_ACTIVITY} from '../actions/index';
 
 const initialState = {
     allcountries:[],
@@ -52,6 +53,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 activities:[...state.activities, action.payload]
             };
+        case DELETE_ACTIVITY:
+            return{
+                ...state,
+               activities: state.activities.filter(activity=>activity.name !== action.payload) 
+            }
         case FILTER_BY_CONTINENT:
             const allcountries = state.allcountries;
             const filterstatus = action.payload === "All"? allcountries :

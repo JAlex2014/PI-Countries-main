@@ -15,10 +15,10 @@ const getapiInfo = async function (){
             id: country.cca3,
             flag_img: country.flags[1],
             continent: country.continents[0],
-            //Como algunos paises no tienen capital, me aseguro con 
+            //Como algunos paises no tienen ciertas props, me aseguro con 
             //un condicional para evitar errores posteriores.
-            capital: country.capital? country.capital[0] :"None",
-            subregion: country.subregion,
+            capital: country.capital? country.capital[0]:"None",
+            subregion: country.subregion?country.subregion:"None",
             area: country.area,
             population: country.population,
         }
@@ -26,19 +26,27 @@ const getapiInfo = async function (){
     return apiInfo;
 };/********************************************************************/
 
-
-//FUNCION PARA GUARDAR LOS DATOS MAPEADOS EN LA FUNCION ANTERIOR 
-//EN MI DATABASE
-const saveCountriesInDb = async function (){
+//FUNCION PARA CREAR SI NO EXISTEN LOS DATOS MAPEADOS EN LA FUNCION ANTERIOR 
+//EN MI DATABASE (LA ACCION DE CREATE SE REALIZA SOLO 1 VEZ)
+const saveOrCreateCountriesInDb = async function (){
     const data = await getapiInfo();
-    //Uso bulkCreate porque me permite guardar gran cantidad de datos 
-    //pasandole un array;
-    const db_countries = await Country.bulkCreate(data);
-    return db_countries;
-};/********************************************************************/
-
+    data.forEach(country => {
+        Country.findOrCreate({
+            where: {name:country.name, 
+                    id:country.id, 
+                    flag_img:country.flag_img,
+                    continent:country.continent,
+                    capital: country.capital,
+                    subregion: country.subregion,
+                    area: country.area,
+                    population: country.population,
+                }
+        })
+    })
+};/********************************************************************/  
 
 //FUNCION PARA TRAER DE MI DATABASE LAS COUNTRIES CON SUS ACTIVITIES
+//LINKEADAS EN EL MISMO MODELO
 const getCountrieswithTours = async function (){
     const data = await Country.findAll({
         include:[{//incluyo el modelo tours para recibir la actividad
@@ -53,6 +61,8 @@ const getCountrieswithTours = async function (){
     return data;
 };/********************************************************************/
 
+//FUNCION PARA TRAER DE MI DATABASE LAS ACTIVITIES CON SUS COUNTRIES
+//LINKEADAS EN EL MISMO MODELO
 const getTourswithCountries = async function (){
     const data = await Tours.findAll({
         include:[{ 
@@ -64,7 +74,7 @@ const getTourswithCountries = async function (){
         }],
     });
     return data;
-};
+};/********************************************************************/
 
 //FUNCION PARA MATCHEAR EL STRING QUE SE INGRESA POR QUERY CON LOS NOMBRES
 //DE PAISES QUE COINCIDAN CON ESE STRING EN MI ARRAY DE PAISES
@@ -87,77 +97,37 @@ const findCountriesbyId = (id, countries) => {
     return filteredCountry;
 };/********************************************************************/
 
+//FUNCION USADA EN LA RUTA POST DE ACTIVITIES
 const addTourtoCountry = async (name,difficulty,duration,season, countries) =>{
+    //PRIMERO CREO UNA NUEVA ACTIVIDAD Y LA GUARDO EN "newTour"
     let newTour = await Tours.create({
         name,
         difficulty,
         duration,
         season,
     });
+    //BUSCO TODOS LOS PAISES A LOS CUALES SE LE ASIGNARÁ LA ACTIVIDAD
    const countries_tour = await Country.findAll({
         where: {
                 name: countries,
           },
-    });    
+    });
+    //FINALMENTE LINKEO EL NUEVO TOUR A MI TABLA DE COUNTRIES
     newTour.addCountry(countries_tour);
-}
+};/********************************************************************/
 
-const evaluate_existingtours = async() => {
-    const countriesFromBody = await Country.findAll({
-        where: {
-          name: countries_name,
-        },
-        include:[
-            {
-              model: Tours,
-              attributes: ["name","difficulty","duration","season"],
-            },
-          ],});
-        /* console.log(countriesFromBody[0].dataValues.name);
-        console.log(countriesFromBody.hasOwnProperty("tours")); */
-    if(countriesFromBody[0].dataValues.hasOwnProperty("tours")){
-        let existTourInCountry = countriesFromBody[0].dataValues.tours.find(tour => {
-                if(tour.name.toLowerCase() === name.toLowerCase()) return true;
-            throw new Error("This activity already exists")
-        });
-        console.log(existTourInCountry);
-        if (!existTourInCountry){
-            let newTour = await Tours.create({
-                name,
-                difficulty,
-                duration,
-                season,
-            });
-           const countries_tour = await Country.findAll({
-                where: {
-                        name: countries_name,
-                  },
-            });    
-            newTour.addCountry(countries_tour);
-        }
-    }else{
-        let newTour = await Tours.create({
-            name,
-            difficulty,
-            duration,
-            season,
-        });
-       const countries_tour = await Country.findAll({
-            where: {
-                    name: countries_name,
-              },
-        });    
-        newTour.addCountry(countries_tour);
-    };
+const deletetours = async(name) => {
+    const tour = await Tours.findOne({ where:{name}});
+    await tour.destroy();
 };
 
 module.exports = {
     getapiInfo,
-    saveCountriesInDb,
+    saveOrCreateCountriesInDb,
     getCountrieswithTours,
     findCountriesbyQuery,
     findCountriesbyId,
     addTourtoCountry,
-    evaluate_existingtours,
+    deletetours,
     getTourswithCountries
 }

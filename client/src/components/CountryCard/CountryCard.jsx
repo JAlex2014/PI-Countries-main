@@ -28,7 +28,7 @@ const CountryCard = ({name,id,img,continent,population}) => {
                 population<1000000?`👨🏽`:
                 population<10000000?`👨🏽👨🏽`:
                 population<100000000?`👨🏽👨🏽👨🏽`:
-                population<500000000?`👨🏽👨🏽👨🏽👨🏽`:"👨🏽👨🏽👨🏽👨🏽"}
+                population<500000000?`👨🏽👨🏽👨🏽👨🏽`:"👨🏽👨🏽👨🏽👨🏽👨🏽"}
             </p>
             <Link className = {Style.Link} to={`countries/${id}`}>
             <button className = {Style.detailbutton}>See details</button>

@@ -10,6 +10,7 @@ export const FILTER_BY_ACTIVITIES = "FILTER_BY_ACTIVITIES";
 export const ORDER_BY_ABC = "ORDER_BY_ABC";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const LOADING = "LOADING";
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 
 export const loading = () => {
         return {type: LOADING};
@@ -57,6 +58,13 @@ export const createActivity = (values) => {
     return async function(dispatch){
         await axios.post("http://localhost:3001/activities", values); 
         return dispatch( {type: CREATE_ACTIVITY, payload: values})
+    }
+};
+
+export const deleteActivity = (name) => {
+    return async function(dispatch){
+        await axios.delete("http://localhost:3001/activities", {data:{name}}); 
+        return dispatch( {type: DELETE_ACTIVITY, payload: name})
     }
 };
 
