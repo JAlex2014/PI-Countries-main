@@ -11,9 +11,15 @@ import Loading from "../Loading/Loading";
 import Style from "./Home.module.css"
 
 const Home = () => {
+
     const dispatch = useDispatch();
     const countries = useSelector(state => state.countries);
     const loading = useSelector(state => state.loading);
+
+    /*DEFINO ESTADOS LOCALES NECESARIOS**************************************/
+    const [activated, setActivated] = useState({
+        1: true,
+    });
     //Defino este estado para poder renderizar los ordenamientos 
     //alfabeticos y por población
     // eslint-disable-next-line
@@ -22,7 +28,8 @@ const Home = () => {
     const [currentPage,setcurrentPage] = useState(1);
     // eslint-disable-next-line
     const [countriesPerPage, setcountriesPerPage] = useState(9.99);
-    
+    /*************************************************************************/
+
     const indexOfLastCountry = currentPage * countriesPerPage;//10
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;//0
     
@@ -32,23 +39,40 @@ const Home = () => {
 
     const paginadoHandler = (pageNumber) => {
         setcurrentPage(pageNumber);
-    };
+    }; 
    
-    React.useEffect(() => {dispatch(actions.getAllCountries())},
-    [dispatch]);
+
+    /*FUNCION PARA MOSTRAR EL BOTON DEL PAGINADO ACTUAL CON ESTILO************/
+    const paginadoActivated = (value = 1) => {
+    const clicked = value;
+    setActivated({
+            [clicked]: true,
+        });
+    };
+    /*************************************************************************/
+    
+    /*USO EL USEEFFECT PARA RENDERIZAR SIEMPRE Y CADA VEZ QUE HAYA************/
+    /*UN CAMBIO EN EL ARRAY DE COUNTRIES**************************************/
+    React.useEffect(() => {dispatch(actions.getAllCountries())},[dispatch]);
+    /*************************************************************************/
     
     return(
         <div className={Style.home}>
             <div className={Style.filtersandpag}>
-                <Search setcurrentPage={setcurrentPage}/>
+                <Search             setcurrentPage={setcurrentPage}
+                                    paginadoActivated={paginadoActivated}
+                />
                 <FiltersnOrdering   setcurrentPage={setcurrentPage} 
                                     setOrden={setOrden}
+                                    paginadoActivated={paginadoActivated}
                 />
-                <Pagination     countriesPerPage={countriesPerPage}
-                                countries={countries.length}
-                                paginadoHandler={paginadoHandler}
-                                setcurrentPage={setcurrentPage}
-                                currentPage={currentPage}
+                <Pagination         countriesPerPage={countriesPerPage}
+                                    countries={countries.length}
+                                    paginadoHandler={paginadoHandler} 
+                                    setcurrentPage={setcurrentPage}
+                                    currentPage={currentPage}
+                                    paginadoActivated={paginadoActivated}   
+                                    activated={activated}        
                 />  
             </div>     
             <div className={currentCountries.length && Style.allCards}> 

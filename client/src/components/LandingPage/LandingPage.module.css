@@ -8,3 +8,53 @@
     -o-background-size: cover;
     background-size: cover;
 }
+.title{
+    text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+    0.5px 0.5px #fff, -0.5px -0.5px #fff, 0.5px -0.5px #fff, -0.5px 0.5px #fff;
+}
+
+.button{
+    text-align: center;
+	display: inline-block;
+	margin:5px;
+    margin-top: 50px;
+    font-weight: bold;
+    padding: 10px 10px 10px 10px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+    font-size: 25pt;
+    font-family: 'Press Start 2p';
+}
+
+.textcontainer{
+    margin: auto;
+    margin-top: 25px;
+    width: 300px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    opacity: 80%;
+}
+
+.text{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.button:active {
+	box-shadow: none;
+	position: relative;
+	top: .2em;
+}
+.button:hover {
+    color: black;
+}

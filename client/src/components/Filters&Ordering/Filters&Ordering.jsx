@@ -10,17 +10,19 @@ import {OrderbyABCs} from "../../redux/actions/index";
 import {OrderbyPopulation} from "../../redux/actions/index";
 import Style from "./Filtersordering.module.css";
 
-const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
+const FiltersnOrdering = ({setcurrentPage, setOrden, paginadoActivated}) => {
+
     const history = useHistory();
     const dispatch = useDispatch();
     const activities = useSelector(state => state.activities);
 
-    
     const handlerOrdering = (event) => {
         switch(event.target.value){
             case "up": 
                 dispatch(OrderbyABCs(event.target.value))
                 setcurrentPage(1);
+                //Al cambiar el orden con este setOrden se puede visualizar
+                //el cambio en el componente Home que tiene las cards
                 setOrden(`Ordenado ${event.target.value}`)
                 break;
             case "down":
@@ -46,16 +48,19 @@ const FiltersnOrdering = ({setcurrentPage, setOrden}) => {
     const handlerFilterContinent = (event) => {
         dispatch(filterCountriesByContinent(event.target.value))
         setcurrentPage(1);
+        paginadoActivated();
     };
 
     const handlerFilterActivities = (event) => {
         dispatch(filterCountriesByActivities(event.target.value))
         setcurrentPage(1);
+        paginadoActivated();
     };
 
     const handlerClearFilter = () => {
         history.go(0);
         setcurrentPage(1);
+        paginadoActivated();
     };
 
     React.useEffect(() => {dispatch(getAllActivities())},

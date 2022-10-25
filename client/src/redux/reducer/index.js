@@ -16,10 +16,16 @@ const initialState = {
     countryDetail: {},
     activities: [],
     loading: true,
+    actualPage: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
+        case "PAGINADO":
+            return{
+                ...state,
+                actualPage: action.payload
+            }
         case LOADING:
             return{
                 ...state,
@@ -125,15 +131,6 @@ const rootReducer = (state = initialState, action) => {
                     if(country2.population > country1.population) return 1;
                     return 0});
             }
-            /* let sortedArr2 = action.payload === "less"?
-            state.countries.sort((country1,country2)=>{
-                if(country1.population > country2.population) return 1;
-                if(country2.population > country1.population) return -1;
-                return 0}):
-            state.countries.sort((country1,country2)=>{
-                if(country1.population > country2.population) return -1;
-                if(country2.population > country1.population) return 1;
-                return 0}) */
             return {
                 ...state,
                 countries: sortedBArraux1,

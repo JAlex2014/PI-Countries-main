@@ -84,4 +84,7 @@ export const OrderbyPopulation = (payload) => {
     return {type: ORDER_BY_POPULATION, payload}
 };
 
+export const SetPaginadoGlobal = (payload) => {
+    return {type: "PAGINADO", payload}
+};
 

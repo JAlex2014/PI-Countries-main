@@ -3,7 +3,7 @@ import {getCountriesSummary} from './../../redux/actions/index';
 import { useDispatch } from 'react-redux';
 import Style from './Search.module.css'
 
-export default function Search({setcurrentPage}) {
+export default function Search({setcurrentPage,paginadoActivated}) {
 
     const [input, setinput] = useState('');
     
@@ -17,6 +17,7 @@ export default function Search({setcurrentPage}) {
         event.preventDefault();
         dispatch(getCountriesSummary(input))
         setcurrentPage(1);
+        paginadoActivated();
         setinput('');
     };
 
