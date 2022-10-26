@@ -1,16 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/index";
-import { difficulties, seasons, duration} from "../ConstsandHelpers";
+import { difficulties, seasons, duration, reg_ex} from "../ConstsandHelpers";
 import Style from "./CreateTour.module.css";
 
 
 const CreateTour = () => {
 
     const dispatch = useDispatch();
+    const allcountries = useSelector(state => state.allcountries);
+
+    /*TRAIGO UN ESTADO LOCAL DE MIS ACTIVITIES PARA PODER MAPEAR**********************/
+    /*SUS NOMBRES Y PODER USARLOS PARA LA VALIDACION DE NOMBRES REPETIDOS*************/
     const activities = useSelector(state => state.activities);
     const tours_names = activities.map(activitie=>activitie.name);
-    const allcountries = useSelector(state => state.allcountries);
+    /*********************************************************************************/
 
     React.useEffect(() => {dispatch(actions.getAllCountries())},[dispatch]);
     React.useEffect(() => {dispatch(actions.getAllActivities())},[dispatch]);
@@ -27,15 +31,15 @@ const CreateTour = () => {
         name:"",
     });
 
+    /*FUNCIÓN VALIDADORA DEL INPUT DEL NOMBRE DE LA ACTIVIDAD************************/
     const validate=(state)=>{
         let errors={};
-        const regex =  (/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g);
         let name_repeated = tours_names.filter(name => name === state.name);
+
         if(!state.name) errors.name="Activity name is required";
         else if(name_repeated.length) errors.name=`The activity >>${state.name}<< was already created`;
-        else if(!regex.test(state.name))
+        else if(!reg_ex.test(state.name))
         errors.name="Activity name is invalid, simbols or one character are not allowed";
-        console.log(name_repeated);
         return errors;
     }
     
@@ -53,6 +57,8 @@ const CreateTour = () => {
         setState({...state,[property]: value});
     }
 
+    /*GUARDO EN MI ESTADO COUNTRIES LOS PAISES QUE VOY SELECCIONANDO EN MI SELECT****/
+    /*Y UTILIZO EL NEW SET PARA ELIMINAR DUPLICADOS**********************************/
     const handlerSelectCountry = (event) => {
         setState({
             ...state,
@@ -61,7 +67,7 @@ const CreateTour = () => {
     }
 
     const handlerSubmit = (event) => {
-        event.preventDefault();//blablabla...
+        event.preventDefault();
         dispatch(actions.createActivity(state));
         setState({
             name: "",
@@ -80,8 +86,6 @@ const CreateTour = () => {
                 country !== event.target.value)
         })
     }
-
-    /* const allcountries = useSelector(state => state.countries); */
     
     return (
         <div className={Style.main}>

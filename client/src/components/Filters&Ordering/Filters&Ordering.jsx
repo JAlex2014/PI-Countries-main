@@ -1,16 +1,20 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {continents} from "../ConstsandHelpers";
-import {getAllActivities} from "../../redux/actions/index";
-import { useHistory } from 'react-router'
+import {useHistory} from 'react-router'
+
 //Importo mis funciones de mis actios que filtran y ordenan
+
+import {getAllActivities} from "../../redux/actions/index";
 import {filterCountriesByContinent} from "../../redux/actions/index";
 import {filterCountriesByActivities} from "../../redux/actions/index";
 import {OrderbyABCs} from "../../redux/actions/index"; 
 import {OrderbyPopulation} from "../../redux/actions/index";
+import {SetPaginadoGlobal} from "../../redux/actions/index";
+
 import Style from "./Filtersordering.module.css";
 
-const FiltersnOrdering = ({setcurrentPage, setOrden, paginadoActivated}) => {
+const FiltersnOrdering = ({setOrden, paginadoActivated}) => {
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -20,25 +24,29 @@ const FiltersnOrdering = ({setcurrentPage, setOrden, paginadoActivated}) => {
         switch(event.target.value){
             case "up": 
                 dispatch(OrderbyABCs(event.target.value))
-                setcurrentPage(1);
+                dispatch(SetPaginadoGlobal(1))
                 //Al cambiar el orden con este setOrden se puede visualizar
                 //el cambio en el componente Home que tiene las cards
                 setOrden(`Ordenado ${event.target.value}`)
+                paginadoActivated();
                 break;
             case "down":
                 dispatch(OrderbyABCs(event.target.value))
-                setcurrentPage(1);
+                dispatch(SetPaginadoGlobal(1))
                 setOrden(`Ordenado ${event.target.value}`)
+                paginadoActivated();
                 break; 
             case "more":
                 dispatch(OrderbyPopulation(event.target.value))
-                setcurrentPage(1);
+                dispatch(SetPaginadoGlobal(1))
                 setOrden(`Ordenado ${event.target.value}`)
+                paginadoActivated();
                 break;
             case "less":
                 dispatch(OrderbyPopulation(event.target.value))
-                setcurrentPage(1);
+                dispatch(SetPaginadoGlobal(1))
                 setOrden(`Ordenado ${event.target.value}`)
+                paginadoActivated();
                 break;
             default:
                 break;
@@ -47,19 +55,19 @@ const FiltersnOrdering = ({setcurrentPage, setOrden, paginadoActivated}) => {
 
     const handlerFilterContinent = (event) => {
         dispatch(filterCountriesByContinent(event.target.value))
-        setcurrentPage(1);
+        dispatch(SetPaginadoGlobal(1))
         paginadoActivated();
     };
 
     const handlerFilterActivities = (event) => {
         dispatch(filterCountriesByActivities(event.target.value))
-        setcurrentPage(1);
+        dispatch(SetPaginadoGlobal(1))
         paginadoActivated();
     };
 
     const handlerClearFilter = () => {
         history.go(0);
-        setcurrentPage(1);
+        dispatch(SetPaginadoGlobal(1))
         paginadoActivated();
     };
 

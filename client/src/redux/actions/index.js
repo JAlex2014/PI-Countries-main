@@ -11,10 +11,7 @@ export const ORDER_BY_ABC = "ORDER_BY_ABC";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 export const LOADING = "LOADING";
 export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
-
-export const loading = () => {
-        return {type: LOADING};
-    };
+export const PAGINADO = "PAGINADO";
     
 export const getAllCountries = () => {
     return async function(dispatch){
@@ -39,7 +36,7 @@ export const getCountryDetail = (id) => {
             return dispatch({type:GET_COUNTRY_DETAIL, payload: response.data});
         }catch(error){
             return dispatch({type:GET_COUNTRY_DETAIL, payload: {}});
-    }
+        }
     };
 };
 
@@ -85,6 +82,10 @@ export const OrderbyPopulation = (payload) => {
 };
 
 export const SetPaginadoGlobal = (payload) => {
-    return {type: "PAGINADO", payload}
+    return {type: PAGINADO, payload}
+};
+
+export const loading = () => {
+    return {type: LOADING};
 };
 

@@ -9,6 +9,7 @@ import {ORDER_BY_ABC} from '../actions/index';
 import {ORDER_BY_POPULATION} from '../actions/index';
 import {LOADING} from '../actions/index';
 import {DELETE_ACTIVITY} from '../actions/index';
+import {PAGINADO} from '../actions/index';
 
 const initialState = {
     allcountries:[],
@@ -21,7 +22,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
-        case "PAGINADO":
+        case PAGINADO:
             return{
                 ...state,
                 actualPage: action.payload

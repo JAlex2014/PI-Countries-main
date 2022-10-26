@@ -1,17 +1,20 @@
 import React from "react";
 import Style from "./Pagination.module.css";
+import {SetPaginadoGlobal} from "../../redux/actions/index";
+import { useDispatch } from "react-redux";
 
 const Pagination = ({ countriesPerPage, 
                       countries, 
                       paginadoHandler, 
-                      setcurrentPage,
                       currentPage, 
                       paginadoActivated,
                       activated }) => {
-    
+
+    const dispatch = useDispatch();
     const pageNumbers = [];
 
     const handlerClick = (event, number) => {
+      event.preventDefault();
       paginadoHandler(number);
       paginadoActivated(event.target.name)
     };
@@ -19,13 +22,13 @@ const Pagination = ({ countriesPerPage,
     const handlePrev = (event) => {
       event.preventDefault();
       paginadoActivated(currentPage - 1);
-      setcurrentPage(currentPage - 1);
+      dispatch(SetPaginadoGlobal(currentPage - 1))
     }; 
 
     const handleNext =(event)=> {
       event.preventDefault();
       paginadoActivated(currentPage+1);
-      setcurrentPage(currentPage + 1);
+      dispatch(SetPaginadoGlobal(currentPage + 1))
     };
 
     for (let i=0; i<Math.ceil(countries/countriesPerPage); i++){

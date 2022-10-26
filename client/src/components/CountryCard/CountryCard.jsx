@@ -3,8 +3,6 @@ import Style from "./CountryCard.module.css";
 import { imgNA,imgANT,imgAS,imgSA,imgOCE,imgEUO,imgAFR} from "../ConstsandHelpers";
 
 const CountryCard = ({name,id,img,continent,population}) => {
-
-
     return(
         <div className = {Style.CountryCard}>
             <img className={Style.img} src={img} alt={"Img not found"}/>
