@@ -24,10 +24,12 @@ const FiltersnOrdering = ({setOrden, paginadoActivated}) => {
         switch(event.target.value){
             case "up": 
                 dispatch(OrderbyABCs(event.target.value))
+                //Seteo mi pagina a la 1
                 dispatch(SetPaginadoGlobal(1))
                 //Al cambiar el orden con este setOrden se puede visualizar
                 //el cambio en el componente Home que tiene las cards
                 setOrden(`Ordenado ${event.target.value}`)
+                //Seteo el estilo del boton de la pagina 1
                 paginadoActivated();
                 break;
             case "down":

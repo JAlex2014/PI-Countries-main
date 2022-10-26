@@ -12,7 +12,6 @@ const Nav = () => {
                         <NavLink to="/countries" className={Style.main}>Home🌎</NavLink>
                         <NavLink to="/activities" className={Style.main}>Activities</NavLink>
                         <NavLink to="/activities/create" className={Style.main}>CreateTour</NavLink>
-                        {/* <NavLink to='/about' className={Style.main}>About</NavLink> */}
                     </div>
                 </div>
             </nav>

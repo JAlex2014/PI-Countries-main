@@ -17,8 +17,8 @@ export default function Search({paginadoActivated}) {
     const clickHandler = (event) => {
         event.preventDefault();
         dispatch(getCountriesSummary(input))
-        dispatch(SetPaginadoGlobal(1))
-        paginadoActivated();
+        dispatch(SetPaginadoGlobal(1)) 
+        paginadoActivated(); 
         setinput('');
     };
 

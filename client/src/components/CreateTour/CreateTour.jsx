@@ -13,7 +13,7 @@ const CreateTour = () => {
     /*TRAIGO UN ESTADO LOCAL DE MIS ACTIVITIES PARA PODER MAPEAR**********************/
     /*SUS NOMBRES Y PODER USARLOS PARA LA VALIDACION DE NOMBRES REPETIDOS*************/
     const activities = useSelector(state => state.activities);
-    const tours_names = activities.map(activitie=>activitie.name);
+    const tours_names = activities.map(activitie => activitie.name);
     /*********************************************************************************/
 
     React.useEffect(() => {dispatch(actions.getAllCountries())},[dispatch]);
@@ -39,7 +39,7 @@ const CreateTour = () => {
         if(!state.name) errors.name="Activity name is required";
         else if(name_repeated.length) errors.name=`The activity >>${state.name}<< was already created`;
         else if(!reg_ex.test(state.name))
-        errors.name="Activity name is invalid, simbols or one character are not allowed";
+        errors.name="Activity name is invalid: simbols, spaces or numbers are not allowed";
         return errors;
     }
     

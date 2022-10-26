@@ -15,10 +15,10 @@ function App() {
           <Route exact path={"/"} component ={LandingPage}/>
           <Route path={"/"} component={Nav}/>
         </Switch>
-        <Route exact path={"/countries"} component = {Home}/>
-        <Route exact path={"/activities"} component = {Activities}/>
-        <Route exact path={"/countries/:id"} component = {CountryDetail}/>
-        <Route exact path={"/activities/create"} component = {CreateTour}/>
+          <Route exact path={"/countries"} component = {Home}/>
+          <Route exact path={"/activities"} component = {Activities}/>
+          <Route exact path={"/countries/:id"} component = {CountryDetail}/>
+          <Route exact path={"/activities/create"} component = {CreateTour}/>
       </div> 
   );
 }

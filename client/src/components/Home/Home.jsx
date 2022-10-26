@@ -79,15 +79,15 @@ const Home = () => {
                 <FiltersnOrdering   setOrden={setOrden}
                                     paginadoActivated={paginadoActivated}/>
 
-                <Pagination         countriesPerPage={countriesPerPage}
+                {(typeof countries !== "string") && <Pagination countriesPerPage={countriesPerPage}
                                     countries={countries.length}
                                     paginadoHandler={paginadoHandler} 
                                     currentPage={currentPage}
                                     paginadoActivated={paginadoActivated}   
-                                    activated={activated}/>  
+                                    activated={activated}/>   }
             </div>     
             <div className={currentCountries.length && Style.allCards}> 
-                {loading?(<Loading/>):currentCountries.length? 
+                {loading?(<Loading/>):((typeof countries !== "string"))?/* currentCountries.length?  */
                     currentCountries.map(country => 
                     <CountryCard    key = {country.id}
                                     name = {country.name}
@@ -95,6 +95,7 @@ const Home = () => {
                                     img = {country.flag_img}
                                     continent = {country.continent}
                                     population= {country.population}
+                                    
                 />):<NotFound/>} 
             </div> 
         </div>

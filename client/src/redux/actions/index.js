@@ -46,7 +46,7 @@ export const getCountriesSummary = (name) =>{
             let response = await axios.get(`/countries?name=${name}`);
             return dispatch({type:GET_COUNTRIES_SUMMARY, payload: response.data});
         }catch(error){
-            return dispatch({type:GET_COUNTRIES_SUMMARY, payload: []});
+            return dispatch({type:GET_COUNTRIES_SUMMARY, payload: error.message});
         }
     };
 };
