@@ -95,8 +95,6 @@ const Home = () => {
                                     img = {country.flag_img}
                                     continent = {country.continent}
                                     population= {country.population}
-                                    planeta={country.planeta}
-                                    
                 />):<NotFound/>} 
             </div> 
         </div>

@@ -57,7 +57,6 @@ const CountryDetail = (props) => {
                             <h3 className={Style.idtitle}>COUNTRY ID: {countryDetail.id}</h3>
                             <img src={countryDetail.flag_img}alt="IMG" width="38px"height="35px"/>
                         </div>
-                        <div>PLANETA: {countryDetail.planeta}</div>
                         <div className={Style.rowContainer}>
                             <h3>CAPITAL: {countryDetail.capital}</h3>
                             <img src={location} alt="IMG" width="38px"height="35px"/>
