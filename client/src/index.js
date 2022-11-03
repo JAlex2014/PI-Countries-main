@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 /* const {BACK_END_LOCAL,HOST,PORT} = process.env; */
-axios.defaults.baseURL = process.env.BACK_END_DEPLOY || "http://localhost:3001";
+axios.defaults.baseURL = process.env.BACK_END_DEPLOY || "http://localhost:3000";
 
 ReactDOM.render(
   <React.StrictMode>

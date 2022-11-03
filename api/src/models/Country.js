@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.INTEGER,//población
       allowNull: true,
+    },
+    planeta:{
+      type: DataTypes.STRING,//planeta
+      
     }
   },{timestamps: false}
   );

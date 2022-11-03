@@ -21,6 +21,7 @@ const getapiInfo = async function (){
             subregion: country.subregion?country.subregion:"None",
             area: country.area,
             population: country.population,
+            planeta: "Tierra",
         }
     });
     return apiInfo;
@@ -40,6 +41,7 @@ const saveOrCreateCountriesInDb = async function (){
                     subregion: country.subregion,
                     area: country.area,
                     population: country.population,
+                    planeta: country.planeta,
                 }
         })
     })

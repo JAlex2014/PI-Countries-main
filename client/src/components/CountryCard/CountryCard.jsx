@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import Style from "./CountryCard.module.css";
 import { imgNA,imgANT,imgAS,imgSA,imgOCE,imgEUO,imgAFR} from "../ConstsandHelpers";
 
-const CountryCard = ({name,id,img,continent,population}) => {
+const CountryCard = ({name,id,img,continent,population,planeta}) => {
     return(
         <div className = {Style.CountryCard}>
             <img className={Style.img} src={img} alt={"Img not found"}/>
@@ -21,6 +21,7 @@ const CountryCard = ({name,id,img,continent,population}) => {
                 <img src={imgAFR} alt="IMG" width="40px"height="40px"/>
             }
             </>
+            <p>Planeta:{planeta}</p>
             <p className={Style.numbers}>Population: {new Intl.NumberFormat('en-US').format(population)}</p>
             <p>{population===0?`💀`:
                 population<1000000?`👨🏽`:
